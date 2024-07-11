@@ -7,6 +7,8 @@
 
 .toggle {
   cursor: pointer;
+  padding-right: 5px;
+  padding-left: 5px;
 }
 
 .toggle input[type="checkbox"] {
@@ -31,5 +33,5 @@
    justify-content: center;
    align-items: center;
    width: 100%;
-   margin-bottom: 10px,
+   margin-bottom: 10px;
 }
