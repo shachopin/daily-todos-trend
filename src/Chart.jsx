@@ -10,6 +10,7 @@ export default function Chart({ data }) {
     chart: {
       zoomType: "x",
       width: 1000,
+      height: 800
     },
     credits: {
       enabled: false,
