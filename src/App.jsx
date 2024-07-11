@@ -88,7 +88,7 @@ function App() {
           width: "100%",
         }}
       >
-        <h1>dail todos trend 😃</h1>
+        <h1>daily todos trend 😃</h1>
 
         {items.length > 0 && <Chart data={items} />}
 
