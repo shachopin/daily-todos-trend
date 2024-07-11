@@ -43,6 +43,7 @@ export const todos = [
   'dance bachata/tango/waltz',
   'movie',
   'do gardening work',
+  'do house cleaning/organizing/trimming',
   
   'rental management',
   
@@ -65,6 +66,5 @@ export const todos = [
   
   'price action and technical analysis',
   'actual trading'
-  
 ];
 
