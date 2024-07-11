@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+
+.toggle {
+  cursor: pointer;
+}
+
+.toggle input[type="checkbox"] {
+  display: none;
+}
+
+.toggle.on {
+  background-color: green;
+}
+
+.toggle.off {
+  background-color: red;
+}
+.myspan {
+  margin-right: 10px;
+}
