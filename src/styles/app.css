@@ -14,7 +14,7 @@
 }
 
 .toggle.on {
-  background-color: green;
+  background-color: yellow;
 }
 
 .toggle.off {
