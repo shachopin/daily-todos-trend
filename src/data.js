@@ -58,13 +58,13 @@ export const todos = new Map([
   ['invest with henry', 80],
   ['sdt training', 70],
   ['projectfinance', 60],
-  ['guillermo', 50]
+  ['guillermo', 50],
   
   ['khanacademy', 40],
   ['econ crash course', 30],
   
   ['price action and technical analysis', 20],
-  ['actual trading', 10],
+  ['actual trading', 10]
   
 ]);
 
