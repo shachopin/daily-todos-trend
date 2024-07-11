@@ -67,7 +67,6 @@ function App() {
     }
   };
 
- 
   const onUndoAll = () => {
     db.collection("dones")
       .get()
