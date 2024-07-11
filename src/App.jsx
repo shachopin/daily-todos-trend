@@ -5,11 +5,11 @@ import Chart from "./Chart";
 import Todo from "./Todo";
 import { todos } from "./data";
 import { Button } from "@material-ui/core";
-import { useFirebase } from './customHooks';
+import { useFirebase } from "./customHooks";
 import { db } from "./firebase_config";
 
 function App() {
-  const items = useFirebase("items", ["name", "score", 'timestamp']);
+  const items = useFirebase("items", ["name", "score", "timestamp"]);
   const dones = useFirebase("dones", ["name"]);
 
   function addItem(score, name) {
