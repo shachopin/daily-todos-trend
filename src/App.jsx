@@ -95,12 +95,12 @@ function App() {
         <Button variant="contained" color="primary" onClick={onUndoAll}>
           Undo All
         </Button>
-        {[...todos.entries()].map(([itemName, score], index) => (
+        {todos.map((itemName, index) => (
           <div key={index} style={{ display: "flex", marginTop: 10 }}>
             <span className="myspan">{itemName}</span>
             <Todo
               onToggle={(isChecked, id) =>
-                onToggle(isChecked, score, itemName, id)
+                onToggle(isChecked, (todos.length - index) * 10, itemName, id)
               }
               checked={dones.filter((done) => done.name === itemName).length}
               id={dones.find((done) => done.name === itemName)?.id}

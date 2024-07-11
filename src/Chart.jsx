@@ -62,7 +62,7 @@ export default function Chart({ data }) {
         threshold: null,
       },
     },
-    series: [...todos].map(([name, _]) => ({
+    series: todos.map(name => ({
       type: "area",
       name,
       //color: "blue",
