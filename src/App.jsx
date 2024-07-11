@@ -85,6 +85,7 @@ function App() {
           justifyContent: "center",
           alignItems: "center",
           width: "100%",
+          marginBottom: 10,
         }}
       >
         <h1>daily todos trend 😃</h1>
