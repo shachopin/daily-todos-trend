@@ -19,6 +19,12 @@ export const useFirebase = (stuff, attributeNames = []) => {
     });
   }
 
+  function addStuff(newDocData) {
+    db.collection(stuff).add(
+      convertAttributeNamesToAttributeObj(attributeNames, newDocData)
+    );
+  }
+
   const convertAttributeNamesToAttributeObj = (attributeNames, docData) => {
     return attributeNames.reduce(
       (acc, k) => ({
@@ -29,5 +35,19 @@ export const useFirebase = (stuff, attributeNames = []) => {
     );
   };
 
-  return state;
+  const undoAll = () => {
+    db.collection("dones")
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.docs.forEach((snapshot) => {
+          snapshot.ref.delete();
+        });
+      });
+  };
+
+  const deleteDone = (id) => {
+    db.collection("dones").doc(id).delete();
+  };
+
+  return [state, addStuff, undoAll, deleteDone];
 };
