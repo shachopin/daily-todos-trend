@@ -8,7 +8,7 @@ import { todos } from "./data";
 export default function Chart({ data }) {
   const options = {
     chart: {
-      zoomType: "x",
+      zoomType: "xy",
       width: 1000,
       height: 800
     },
