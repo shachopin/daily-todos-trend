@@ -63,7 +63,7 @@ export default function Chart({ data }) {
       },
     },
     series: todos.map(name => ({
-      type: "area",
+      //type: "area",
       name,
       //color: "blue",
       data: data
