@@ -1,4 +1,7 @@
 export const todos = [
+  'social event',
+  'talk to someone',
+  
   'dom',
   'pure js',
   'small react',
