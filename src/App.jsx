@@ -22,6 +22,7 @@ function App() {
   return (
     <div className="app">
       <h1>daily todos trend 😃</h1>
+      <div style={{marginTop: -20}}>Every day is a gift from god, use it wisely</div>
 
       {items.length > 0 && <Chart data={items} />}
 
