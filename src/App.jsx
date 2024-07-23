@@ -3,8 +3,9 @@ import "./styles/app.css";
 import Chart from "./Chart";
 import Todo from "./Todo";
 import { todos } from "./data";
-import { Button } from "@material-ui/core";
+import { Button, IconButton } from "@material-ui/core";
 import { useFirebase } from "./customHooks";
+import AddIcon from '@material-ui/icons/Add';
 
 function App() {
   const [items, addItem] = useFirebase("items", ["name", "score", "timestamp"]);
@@ -18,6 +19,10 @@ function App() {
       deleteDone(id);
     }
   };
+  
+  const onAddMore = (score, name) => {
+    addItem({ timestamp: Date.now(), score, name });
+  };
 
   return (
     <div className="app">
@@ -30,7 +35,7 @@ function App() {
         Undo All
       </Button>
       {todos.map((itemName, index) => (
-        <div key={index} style={{ display: "flex", marginTop: 10 }}>
+        <div key={index} style={{ display: "flex", marginTop: 10, alignItems: 'center' }}>
           <span className="myspan">{itemName}</span>
           <Todo
             onToggle={(isChecked, id) =>
@@ -39,6 +44,9 @@ function App() {
             checked={dones.filter((done) => done.name === itemName).length}
             id={dones.find((done) => done.name === itemName)?.id}
           />
+          {!!dones.filter((done) => done.name === itemName).length && <IconButton onClick={() => onAddMore((todos.length - index) * 10, itemName)} style={{padding: 0, margin: 0}} aria-label="more">
+            <AddIcon />
+          </IconButton>}
         </div>
       ))}
     </div>
