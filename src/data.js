@@ -1,6 +1,13 @@
 export const todos = [
-  'social event',
-  'talk to someone',
+  'small projects',
+  'big projects',
+  'java or js algo and ds',
+  'exercise',
+  'relax and health',
+  'rental management',
+  'investment/trading',
+  
+  'social/talk to someone',
   
   'dom',
   'pure js',
@@ -20,6 +27,8 @@ export const todos = [
   'ojet',
   'coding tools',
   'graphql',
+  'cms',
+  'react native',
   
   'dfs',
   'bfs',
@@ -48,11 +57,15 @@ export const todos = [
   'do gardening work',
   'do house cleaning/organizing/trimming',
   
-  'rental management',
+  'my own property',
+  'cohost property',
   
   'sdt news',
   'ron walker',
   'mtm',
+  'meetkevin',
+  'silva',
+  'mike',
   
   'by jake',
   'give and grow',
@@ -60,14 +73,17 @@ export const todos = [
   'adt training',
   'smb training',
   'invest with henry',
-  'sdt training',
   'projectfinance',
   'guillermo',
+  'llp',
   
   'khanacademy',
   'econ crash course',
   
-  'price action and technical analysis',
+  'wysertrade',
+  'sdt training',
+  'fractal flow',
+  
   'actual trading'
 ];
 
