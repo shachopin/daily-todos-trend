@@ -76,6 +76,7 @@ export const todos = [
   'projectfinance',
   'guillermo',
   'llp',
+  'udemy',
   
   'khanacademy',
   'econ crash course',
