@@ -10,19 +10,20 @@ import AddIcon from '@material-ui/icons/Add';
 function App() {
   const [items, addItem] = useFirebase("items", ["name", "score", "timestamp"]);
   const [dones, addDone, undoAll, deleteDone] = useFirebase("dones", ["name"]);
+  const [today, setToday] = useState('true')
 
   const onToggle = (isChecked, score, name, id) => {
     if (!isChecked) {
-      addItem({ timestamp: Date.now(), score, name });
+      addItem({ timestamp: today ? Date.now() : Date.now() + 24 * 60 * 60 * 1000, score, name });
       addDone({ name });
     } else {
       deleteDone(id);
     }
   };
   
-  const onAddMore = (score, name) => {
-    addItem({ timestamp: Date.now(), score, name });
-  };
+  // const onAddMore = (score, name) => {
+  //   addItem({ timestamp: Date.now(), score, name });
+  // };
 
   return (
     <div className="app">
@@ -31,9 +32,12 @@ function App() {
 
       {items.length > 0 && <Chart data={items} />}
 
-      <Button variant="contained" color="primary" onClick={undoAll}>
+      <div><Button variant="contained" color="primary" onClick={undoAll}>
         Undo All
       </Button>
+      <Button variant="contained" color="secondary" style={{marginLeft: 10}} onClick={() => setToday(!today)}>
+        For {today ? "Today" : "Tomorrow"}
+        </Button></div>
       {todos.map((itemName, index) => (
         <div key={index} style={{ display: "flex", marginTop: 10, alignItems: 'center' }}>
           <span className="myspan">{itemName}</span>
@@ -44,9 +48,9 @@ function App() {
             checked={dones.filter((done) => done.name === itemName).length}
             id={dones.find((done) => done.name === itemName)?.id}
           />
-          {!!dones.filter((done) => done.name === itemName).length && <IconButton onClick={() => onAddMore((todos.length - index) * 10, itemName)} style={{padding: 0, margin: 0}} aria-label="more">
+          {/*!!dones.filter((done) => done.name === itemName).length && <IconButton onClick={() => onAddMore((todos.length - index) * 10, itemName)} style={{padding: 0, margin: 0}} aria-label="more">
             <AddIcon />
-          </IconButton>}
+          </IconButton>*/}
         </div>
       ))}
     </div>
