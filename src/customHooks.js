@@ -49,14 +49,12 @@ export const useFirebase = (stuff, attributeNames = []) => {
     db.collection(stuff).doc(id).delete();
   };
   
-  const deleteLatestItem = () => {
-    const latestItemId = db.collection(stuff).onValue(function (querySnapshot) {
-        querySnapshot.docs.map((doc) => ({
-          id: doc.id,
-          timestamp: doc.data().timestamp
-        })).sort((a, b) => b.timestamp - a.timestamp)
-    })[0].id;
-
+  const deleteLatestItem = async () => {  
+    const snapshot = await db.collection(stuff).get();
+    const latestItemId = snapshot.docs.map((doc) => ({
+      id: doc.id,
+      timestamp: doc.data().timestamp
+    })).sort((a, b) => b.timestamp - a.timestamp)[0].id;
     db.collection(stuff).doc(latestItemId).delete();
   };
 
