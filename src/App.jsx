@@ -9,7 +9,7 @@ import AddIcon from "@material-ui/icons/Add";
 import TextField from "@material-ui/core/TextField";
 
 function App() {
-  const [items, addItem] = useFirebase("items", ["name", "score", "timestamp"]);
+  const [items, addItem, , , deleteLatestItem] = useFirebase("items", ["name", "score", "timestamp"]);
   const [dones, addDone, undoAll, deleteDone] = useFirebase("dones", ["name"]);
   //const [today, setToday] = useState("true");
   const [days, setDays] = useState(null);
@@ -43,6 +43,9 @@ function App() {
       <div>
         <Button variant="contained" color="primary" onClick={undoAll}>
           Undo All
+        </Button>
+        <Button variant="contained" color="secondary" onClick={deleteLatestItem} style={{marginLeft: 10}}>
+          Delete Latest
         </Button>
         {/*<Button
           variant="contained"
