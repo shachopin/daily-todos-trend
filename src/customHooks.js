@@ -36,7 +36,7 @@ export const useFirebase = (stuff, attributeNames = []) => {
   };
 
   const undoAll = () => {
-    db.collection("dones")
+    db.collection(stuff)
       .get()
       .then((querySnapshot) => {
         querySnapshot.docs.forEach((snapshot) => {
@@ -46,8 +46,19 @@ export const useFirebase = (stuff, attributeNames = []) => {
   };
 
   const deleteDone = (id) => {
-    db.collection("dones").doc(id).delete();
+    db.collection(stuff).doc(id).delete();
+  };
+  
+  const deleteLatestItem = () => {
+    const latestItemId = db.collection(stuff).onValue(function (querySnapshot) {
+        querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          timestamp: doc.data().timestamp
+        })).sort((a, b) => b.timestamp - a.timestamp)
+    })[0].id;
+
+    db.collection(stuff).doc(latestItemId).delete();
   };
 
-  return [state, addStuff, undoAll, deleteDone];
+  return [state, addStuff, undoAll, deleteDone, deleteLatestItem];
 };
