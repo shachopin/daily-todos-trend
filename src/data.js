@@ -1,4 +1,8 @@
 export const todos = [
+  '6-12',
+  '12-18',
+  '18-24',
+  
   'small projects',
   'big projects',
   'java or js algo and ds',
