@@ -53,10 +53,9 @@ export const useFirebase = (stuff, attributeNames = []) => {
     const snapshot = await db.collection(stuff).get();
     const latestItemId = snapshot.docs.map((doc) => ({
       id: doc.id,
-      timestamp: doc.data().timestamp
-    })).sort((a, b) => b.timestamp - a.timestamp)[0].id;
+      systemtimestamp: doc.data().systemtimestamp
+    })).sort((a, b) => b.systemtimestamp - a.systemtimestamp)[0].id;
     db.collection(stuff).doc(latestItemId).delete();
   };
-
   return [state, addStuff, undoAll, deleteDone, deleteLatestItem];
 };
