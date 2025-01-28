@@ -7,9 +7,10 @@ import { Button, IconButton } from "@material-ui/core";
 import { useFirebase } from "./customHooks";
 import AddIcon from "@material-ui/icons/Add";
 import TextField from "@material-ui/core/TextField";
+import firebase from "firebase";
 
 function App() {
-  const [items, addItem, , , deleteLatestItem] = useFirebase("items", ["name", "score", "timestamp"]);
+  const [items, addItem, , , deleteLatestItem] = useFirebase("items", ["name", "score", "timestamp","systemtimestamp"]);
   const [dones, addDone, undoAll, deleteDone] = useFirebase("dones", ["name"]);
   //const [today, setToday] = useState("true");
   const [days, setDays] = useState(null);
@@ -20,6 +21,7 @@ function App() {
         timestamp: Date.now() + days * 24 * 60 * 60 * 1000,
         score,
         name,
+        systemtimestamp: firebase.firestore.FieldValue.serverTimestamp()
       });
       addDone({ name });
     } else {
