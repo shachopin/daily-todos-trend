@@ -71,6 +71,7 @@ export const todos = [
   'silva',
   'mike',
   'llp news',
+  'other news',
   
   'by jake',
   'give and grow',
@@ -82,6 +83,7 @@ export const todos = [
   'guillermo',
   'llp',
   'udemy',
+  'other strategies',
   
   'khanacademy',
   'econ crash course',
@@ -89,7 +91,7 @@ export const todos = [
   'wysertrade',
   'sdt training',
   'fractal flow',
+  'other ta',
   
   'actual trading'
 ];
-
