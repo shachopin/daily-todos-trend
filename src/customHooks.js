@@ -57,5 +57,12 @@ export const useFirebase = (stuff, attributeNames = []) => {
     })).sort((a, b) => b.systemtimestamp - a.systemtimestamp)[0].id;
     db.collection(stuff).doc(latestItemId).delete();
   };
-  return [state, addStuff, undoAll, deleteDone, deleteLatestItem];
+
+  const onChangeInput = (id, attributeKey, attributeValue) => {
+    db.collection(stuff).doc(id).update({
+      [attributeKey]: attributeValue
+    });
+  };
+  
+  return [state, addStuff, undoAll, deleteDone, deleteLatestItem, onChangeInput];
 };

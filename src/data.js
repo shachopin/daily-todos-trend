@@ -70,6 +70,7 @@ export const todos = [
   'meetkevin',
   'silva',
   'mike',
+  'llp news',
   
   'by jake',
   'give and grow',

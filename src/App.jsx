@@ -3,7 +3,7 @@ import "./styles/app.css";
 import Chart from "./Chart";
 import Todo from "./Todo";
 import { todos } from "./data";
-import { Button, IconButton } from "@material-ui/core";
+import { Button, IconButton, TextareaAutosize } from "@material-ui/core";
 import { useFirebase } from "./customHooks";
 import AddIcon from "@material-ui/icons/Add";
 import TextField from "@material-ui/core/TextField";
@@ -12,8 +12,27 @@ import firebase from "firebase";
 function App() {
   const [items, addItem, , , deleteLatestItem] = useFirebase("items", ["name", "score", "timestamp","systemtimestamp"]);
   const [dones, addDone, undoAll, deleteDone] = useFirebase("dones", ["name"]);
+  const [notes, , , , , updateNoteContent] = useFirebase("notes", ["noteContent"]);
   //const [today, setToday] = useState("true");
   const [days, setDays] = useState(null);
+  const [localNoteData, setLocalNoteData] = useState("");
+
+  useEffect(() => {
+    const timeId = setTimeout(() => {
+      updateNoteContent(notes[0].id, "noteContent", localNoteData);
+    }, 1500);
+    return () => clearTimeout(timeId);
+  }, [localNoteData]);
+
+  useEffect(() => {
+    if (notes.length) {
+      setLocalNoteData(notes[0].noteContent)
+    }
+  }, [notes]);
+  //这里两个useEffect是让local state to be updated quickly, but send data to firebase in 1500ms in debounce way
+  //but notice after that, it was still very slow
+  //Chart was always updating whenever rerender
+  //so had to use React.memo on chart
 
   const onToggle = (isChecked, score, name, id) => {
     if (!isChecked) {
@@ -65,6 +84,7 @@ function App() {
           onChange={(e) => setDays(e.target.value)}
         />
       </div>
+      <TextareaAutosize aria-label="empty textarea" placeholder="Notes" value={localNoteData} onChange={e => setLocalNoteData(e.target.value)} style={{width: "18vw", marginTop: 10}}/>
       {todos.map((itemName, index) => (
         <div
           key={index}

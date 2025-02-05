@@ -1,11 +1,11 @@
-import React from "react";
+import {memo} from "react";
 import { render } from "react-dom";
 // Import Highcharts
 import Highcharts from "highcharts/highstock";
 import HighchartsReact from "highcharts-react-official";
 import { todos } from "./data";
 
-export default function Chart({ data }) {
+function Chart({ data }) {
   const options = {
     chart: {
       zoomType: "xy",
@@ -81,3 +81,5 @@ export default function Chart({ data }) {
 
   return <HighchartsReact highcharts={Highcharts} options={options} />;
 }
+
+export default memo(Chart);
