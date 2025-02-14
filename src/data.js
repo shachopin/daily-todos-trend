@@ -53,7 +53,7 @@ export const todos = [
   'sunshine 晒背 or sit outside',
   'short walk with podcast',
   'eat good/lemon water',
-  'sleep early',
+  'sleep/up early',
   'no mass',
   'maintain good bp',
   'dance bachata/tango/waltz',
