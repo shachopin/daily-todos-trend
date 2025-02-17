@@ -84,7 +84,7 @@ function App() {
           onChange={(e) => setDays(e.target.value)}
         />
       </div>
-      <TextareaAutosize aria-label="empty textarea" placeholder="Notes" value={localNoteData} onChange={e => setLocalNoteData(e.target.value)} style={{width: "18vw", marginTop: 10}}/>
+      <TextareaAutosize aria-label="empty textarea" placeholder="Notes" value={localNoteData} onChange={e => setLocalNoteData(e.target.value)} style={{width: "80vw", marginTop: 10}}/>
       {todos.map((itemName, index) => (
         <div
           key={index}
