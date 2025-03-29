@@ -44,10 +44,9 @@ export const todos = [
   'rope jump',
   'fitness 19',
   'running track at hillsdale high school/new park',
-  'pickleball/badminton/tennis',
+  'pickleball/badminton/tennis/solo tennis',
   'abs',
   'climbing laurelwoods park',
-  'solo tennis',
   'swim',
   
   'sunshine 晒背 or sit outside',
