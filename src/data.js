@@ -9,7 +9,11 @@ export const todos = [
   'exercise',
   'relax and health',
   'rental management',
-  'investment/trading',
+  'general econ course',
+  'actual trading',
+  'chart/technical analysis',
+  'strategy general study',
+  'trading news',
   
   'social/talk to someone',
   
@@ -60,7 +64,7 @@ export const todos = [
   'do gardening work/wildflower',
   'do house cleaning/organizing/trimming',
   
-  'my own property',
+  'rent my own property',
   'cohost property',
   
   'sdt news',
@@ -82,15 +86,15 @@ export const todos = [
   'guillermo',
   'llp',
   'udemy',
-  'other strategies',
+  'other strategies general study',
   
   'khanacademy',
-  'econ crash course',
+  'other general econ course',
   
   'wysertrade',
   'sdt training',
   'fractal flow',
   'other ta',
   
-  'actual trading'
+  
 ];
