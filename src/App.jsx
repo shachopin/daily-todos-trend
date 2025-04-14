@@ -13,6 +13,7 @@ function App() {
   const [items, addItem, , , deleteLatestItem] = useFirebase("items", ["name", "score", "timestamp","systemtimestamp"]);
   const [dones, addDone, undoAll, deleteDone] = useFirebase("dones", ["name"]);
   const [notes, , , , , updateNoteContent] = useFirebase("notes", ["noteContent"]);
+  const [showNotes, setShowNotes] = useState(false);
   //const [today, setToday] = useState("true");
   const [days, setDays] = useState(null);
   const [localNoteData, setLocalNoteData] = useState("");
@@ -33,6 +34,18 @@ function App() {
   //but notice after that, it was still very slow
   //Chart was always updating whenever rerender
   //so had to use React.memo on chart
+  
+  useEffect(() => {
+    function onKeyDown(e) {
+      if (e.key === 'Escape') {
+        setShowNotes(true);
+      }
+    }
+    document.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, []);
 
   const onToggle = (isChecked, score, name, id) => {
     if (!isChecked) {
@@ -84,7 +97,7 @@ function App() {
           onChange={(e) => setDays(e.target.value)}
         />
       </div>
-      <TextareaAutosize aria-label="empty textarea" placeholder="Notes" value={localNoteData} onChange={e => setLocalNoteData(e.target.value)} style={{width: "80vw", marginTop: 10}}/>
+      {showNotes && <TextareaAutosize aria-label="empty textarea" placeholder="Notes" value={localNoteData} onChange={e => setLocalNoteData(e.target.value)} style={{width: "80vw", marginTop: 10}}/>}
       {todos.map((itemName, index) => (
         <div
           key={index}
