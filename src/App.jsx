@@ -38,7 +38,7 @@ function App() {
   useEffect(() => {
     function onKeyDown(e) {
       if (e.key === 'Escape') {
-        setShowNotes(true);
+        setShowNotes(prev => !prev);
       }
     }
     document.addEventListener('keydown', onKeyDown);
